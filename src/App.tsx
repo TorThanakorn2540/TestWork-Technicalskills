@@ -9,7 +9,7 @@ const LongestCommonPrefixComponent: React.FC<LongestCommonPrefixProps> = ({
   onCalculate,
 }) => {
   const [inputStrings, setInputStrings] = useState<string[]>([]);
-  var [valueInput, setValueInput] = useState<string[]>([]);
+  var [valueInput, setValueInput] = useState<string>("");
 
   const handleInputChange = (e: any) => {
     const inputValue = e.target.value;
@@ -17,7 +17,8 @@ const LongestCommonPrefixComponent: React.FC<LongestCommonPrefixProps> = ({
     const stringsArray = inputValue
       .replace(/[^a-z,\s]/g, "")
       .split(/\s*,\s*/)
-      .map((str: any) => str.trim());
+      .map((str: any) => str.trim().slice(0, 200))
+      .slice(0, 200);
     setInputStrings(stringsArray);
   };
 
